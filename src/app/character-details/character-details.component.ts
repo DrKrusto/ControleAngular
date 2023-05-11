@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Character } from '../models/character';
 
 @Component({
   selector: 'app-character-details',
@@ -6,10 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./character-details.component.css']
 })
 export class CharacterDetailsComponent implements OnInit {
-  @Input() id: number;
-  @Input() name: string;
+  @Input() character: Character;
 
-  constructor() { }
+  reverseKarma() {
+    const invertedKarma = this.character.karma == 'good' ? 'bad' : 'good';
+    this.character.karma = invertedKarma;
+  }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

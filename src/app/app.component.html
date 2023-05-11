@@ -1,6 +1,4 @@
 <div class="p-4">
   <h1 class="text-primary">Liste de personnages</h1>
-  <app-character-details id="1" name="moi"></app-character-details>
-  <app-character-details id="2" name="olivier"></app-character-details>
-  <app-character-details id="3" name="le personnage"></app-character-details>
+  <app-character-details *ngFor="let character of characters" [character]="character"></app-character-details>
 </div>

@@ -1,6 +1,8 @@
-<div class="pt-4">
-    <h4 class="pb-2">{{this.name | uppercase}} détails</h4>
-    <span>id: {{this.id}}</span><br>
+<div class="mt-4 alert {{this.character.karma == 'good' ? 'alert-success' : 'alert-danger'}}">
+    <h4 class="pb-2">{{this.character.name | uppercase}} détails</h4>
+    <span>id: {{this.character.id}}</span><br>
     <span>name: </span>
-    <input type="text" [(ngModel)]="name">
+    <input type="text" [(ngModel)]="this.character.name"><br>
+    <button class="btn {{this.character.karma == 'good' ? 'btn-success' : 'btn-danger'}} mt-2"
+        (click)="reverseKarma()">Changer en {{this.character.karma == 'good' ? 'méchant' : 'gentil'}}</button>
 </div>
