@@ -9,6 +9,14 @@ import { CharactersProviderService } from './services/characters-provider.servic
 })
 export class AppComponent {
   title = 'FinalEro';
+  characters: Character[];
 
   constructor(public charactersService: CharactersProviderService) { }
+
+  ngOnInit(): void {
+    this.charactersService.subject.subscribe(
+      (characters: Character[]) => { this.characters = characters }
+    );
+    this.charactersService.emitCharacters();
+  }
 }

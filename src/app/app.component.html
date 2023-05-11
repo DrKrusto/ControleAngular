@@ -1,5 +1,4 @@
 <div class="p-4">
   <h1 class="text-primary">Liste de personnages</h1>
-  <app-character-details *ngFor="let character of charactersService.characters"
-    [character]="character"></app-character-details>
+  <app-character-details *ngFor="let character of characters" [character]="character"></app-character-details>
 </div>
