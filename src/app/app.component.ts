@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Character } from './models/character';
 import { CharactersProviderService } from './services/characters-provider.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,7 @@ import { CharactersProviderService } from './services/characters-provider.servic
 })
 export class AppComponent {
   title = 'FinalEro';
-  characters: Character[];
-
-  constructor(public charactersService: CharactersProviderService) { }
-
-  ngOnInit(): void {
-    this.charactersService.subject.subscribe(
-      (characters: Character[]) => { this.characters = characters }
-    );
-    this.charactersService.emitCharacters();
+  constructor(public charactersService: CharactersProviderService, public router: Router) {
+    this.router.navigate(["/characters"]);
   }
 }

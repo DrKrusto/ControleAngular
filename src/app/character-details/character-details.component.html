@@ -1,8 +1,11 @@
-<div class="mt-4 alert {{this.character.karma == 'good' ? 'alert-success' : 'alert-danger'}}">
-    <h4 class="pb-2">{{this.character.name | uppercase}} détails</h4>
-    <span>id: {{this.character.id}}</span><br>
-    <span>name: </span>
-    <input type="text" [(ngModel)]="this.character.name"><br>
-    <button class="btn {{this.character.karma == 'good' ? 'btn-success' : 'btn-danger'}} mt-2"
-        (click)="reverseKarma()">Changer en {{this.character.karma == 'good' ? 'méchant' : 'gentil'}}</button>
+<div>
+    <div *ngFor="let character of characters"
+        class="mt-4 alert {{character.karma == 'good' ? 'alert-success' : 'alert-danger'}}">
+        <h4 class="pb-2">{{character.name | uppercase}} <a [routerLink]="['/characters', character.id]">détails</a></h4>
+        <span>id: {{character.id}}</span><br>
+        <span>name: </span>
+        <input type="text" [(ngModel)]="character.name"><br>
+        <button class="btn {{character.karma == 'good' ? 'btn-success' : 'btn-danger'}} mt-2"
+            (click)="reverseKarma(character)">Changer en {{character.karma == 'good' ? 'méchant' : 'gentil'}}</button>
+    </div>
 </div>

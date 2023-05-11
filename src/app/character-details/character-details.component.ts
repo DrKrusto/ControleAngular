@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Character } from '../models/character';
+import { CharactersProviderService } from '../services/characters-provider.service';
 
 @Component({
   selector: 'app-character-details',
@@ -7,17 +8,19 @@ import { Character } from '../models/character';
   styleUrls: ['./character-details.component.css']
 })
 export class CharacterDetailsComponent implements OnInit {
-  @Input() character: Character;
+  characters: Character[];
 
-  reverseKarma() {
-    const invertedKarma = this.character.karma == 'good' ? 'bad' : 'good';
-    this.character.karma = invertedKarma;
+  reverseKarma(character: Character) {
+    const invertedKarma = character.karma == 'good' ? 'bad' : 'good';
+    character.karma = invertedKarma;
   }
 
-  constructor() {
-  }
+  constructor(public charactersService: CharactersProviderService) { }
 
   ngOnInit(): void {
+    this.charactersService.subject.subscribe(
+      (characters: Character[]) => { this.characters = characters }
+    );
+    this.charactersService.emitCharacters();
   }
-
 }
